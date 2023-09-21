@@ -2,15 +2,17 @@ import { useNavigate } from "react-router-dom";
 
 export default function PlayerListName({player}){
     const navigate = useNavigate()
-    console.log(player.id)
+    // console.log(player.id)
     return(
-        <>
-        <h3> {player.name} </h3>
-        <button onClick={() => navigate(`/${player.id}`)}>Details</button>
-        </>
+    <>
+        <div className="preview">
+        <h2 key={player.id}>{player.name}</h2>
+        <h3>{player.breed}</h3>
+        <button onClick={() => navigate(`/${player.id}`)} player={player}> More info here!</button>
+        </div>
+    </>
     )
 }
-// import { useNavigate } from "react-router-dom";
 
 // export default function playerListName ({player}) {
 //     const navigate =useNavigate()

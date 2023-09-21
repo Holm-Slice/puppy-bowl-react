@@ -1,8 +1,7 @@
 import {useState, useEffect} from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import {fetchSinglePlayer} from "../Api.jsx"
 
-const API = "https://fsa-puppy-bowl.herokuapp.com/api/2306-FTB-ET-WEB-AM/players";
 
 export default function SinglePlayer() {
 
@@ -11,6 +10,10 @@ export default function SinglePlayer() {
     // console.log(player);
     // console.log(player);
     const {id} = useParams();
+    const navigate = useNavigate();
+    const backButton =()=>{
+        navigate(-1)
+    }
     console.log(id);
 
 
@@ -33,7 +36,7 @@ useEffect(() => {
         <h2>{player && player.status}</h2>
         <h2>{player && player.teamId}</h2>
         <img src={player && player.imageUrl} alt="dog pic" />
-        {/* <button onClick={handleReturnClick}>Go Back!</button> */}
+        <button onClick={backButton}>Back To The Kennel!</button>
         </>
     )
 

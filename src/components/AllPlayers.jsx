@@ -2,28 +2,29 @@
 import { useState, useEffect } from "react"
 import { fetchAllPlayers } from "../Api.jsx" //need the api here 
 import PlayerListName from "./PlayerListName.jsx";
-import { useNavigate  } from "react-router-dom";
+// import { useNavigate  } from "react-router-dom";
+import NewPlayerForm from "./NewPlayerForm.jsx";
 
 
 
-export default function AllPlayers (){
+const AllPlayers = ()=>{
     const [players, setPlayers] = useState([]);
     const [error, setError] = useState(null);
     const [searchParams, setSearchParams] = useState("")
     console.log(players);
     
-    const navigate = useNavigate();
-    useEffect(() =>{
-        async function getAllPlayers() {
-            const response = await FetchAllPlayers();
-            if (response.success){
-                setPlayers(response.data.players);
-            } else{
-                setError(response.error.message);
-            }
-        }
-        getAllPlayers()
-    }, []);
+    // const navigate = useNavigate();
+    // useEffect(() =>{
+    //     async function getAllPlayers() {
+    //         const response = await FetchAllPlayers();
+    //         if (response.success){
+    //             setPlayers(response.data.players);
+    //         } else{
+    //             setError(response.error.message);
+    //         }
+    //     }
+    //     getAllPlayers()
+    // }, []);
 
 
 useEffect(() => {
@@ -57,11 +58,15 @@ console.log(playersToDisplay);
                  />
             </label>
         </div>
+        <div>
+            <NewPlayerForm/>
+        </div>
+
 
         {playersToDisplay.map((player) => {
             return (
                 <>
-                <PlayerListName player={player} key={player.id}  />
+                <PlayerListName key={player.id} player={player}/>
                 </>
             )
         })}
@@ -70,4 +75,4 @@ console.log(playersToDisplay);
 
     }
 
-    // export default AllPlayers;
+export default AllPlayers;
