@@ -40,3 +40,15 @@
 .read-the-docs {
   color: #888;
 }
+
+.submit{
+  background-color: red;
+}
+
+.info-button{
+  background-color: #CC7F3B;
+}
+
+.name{
+  text-decoration: underline;
+}

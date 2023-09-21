@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import {fetchSinglePlayer} from "../Api.jsx"
+import { useParams } from 'react-router-dom'
 
 
 export default function SinglePlayer() {
@@ -9,7 +10,7 @@ export default function SinglePlayer() {
     const [error, setError] = useState(null)
     // console.log(player);
     // console.log(player);
-    const {id} = useParams();
+    const {id} = useParams()
     const navigate = useNavigate();
     const backButton =()=>{
         navigate(-1)
@@ -22,7 +23,7 @@ useEffect(() => {
         const response = await fetchSinglePlayer(id);
         if (response.success){
             setPlayer(response.data.player);
-        } else{
+        } else {
             setError(response.error.message);
         }
     }
@@ -31,16 +32,17 @@ useEffect(() => {
 
     return(
         <>
-        <h1>{player && player.name}</h1>
-        <h2>{player && player.breed}</h2>
+        <h1 className='name'>{player && player.name}</h1>
+        <img src={player && player.imageUrl} alt="dog pic" />
+        <h2>Hi! I am a {player && player.breed}</h2>
         <h2>{player && player.status}</h2>
         <h2>{player && player.teamId}</h2>
-        <img src={player && player.imageUrl} alt="dog pic" />
+        <br />
         <button onClick={backButton}>Back To The Kennel!</button>
         </>
     )
 
-};
+}
 
 // export default SinglePlayer;
 

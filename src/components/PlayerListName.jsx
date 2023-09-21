@@ -8,7 +8,7 @@ export default function PlayerListName({player}){
         <div className="preview">
         <h2 key={player.id}>{player.name}</h2>
         <h3>{player.breed}</h3>
-        <button onClick={() => navigate(`/${player.id}`)} player={player}> More info here!</button>
+        <button className="info-button" onClick={() => navigate(`/${player.id}`)} player={player}> More info here!</button>
         </div>
     </>
     )

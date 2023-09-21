@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { fetchAllPlayers } from "../Api.jsx"
 
-const COHORT = "2306-ftb-et-web-am"
-const API_URL = `https://fsa-puppy-bowl.herokuapp.com/api/${COHORT}/players`
+const Cohort = "2306-ftb-et-web-am"
+const API_URL = `https://fsa-puppy-bowl.herokuapp.com/api/${Cohort}/players`
 
 const NewPlayerForm = () => {
     const [name, setName] = useState("");

@@ -1,17 +1,17 @@
 // import React from "react";
-import { useState, useEffect } from "react"
-import { fetchAllPlayers } from "../Api.jsx" //need the api here 
+import { useState, useEffect } from "react";
+import { fetchAllPlayers } from "../Api.jsx"; //need the api here 
 import PlayerListName from "./PlayerListName.jsx";
 // import { useNavigate  } from "react-router-dom";
 import NewPlayerForm from "./NewPlayerForm.jsx";
 
 
 
-const AllPlayers = ()=>{
+const AllPlayers = () => {
     const [players, setPlayers] = useState([]);
     const [error, setError] = useState(null);
-    const [searchParams, setSearchParams] = useState("")
-    console.log(players);
+    const [searchParams, setSearchParams] = useState("");
+    // console.log(searchParams);
     
     // const navigate = useNavigate();
     // useEffect(() =>{
@@ -30,9 +30,9 @@ const AllPlayers = ()=>{
 useEffect(() => {
     async function getAllPlayers(){
         const response = await fetchAllPlayers();
-        if (response.success){
+        if (response.success) {
             setPlayers(response.data.players);
-        } else{
+        } else {
             setError(response.error.message);
         }
     }
@@ -40,17 +40,17 @@ useEffect(() => {
 }, []);
 
 const playersToDisplay = searchParams
-    ? players.filter((player) =>{
-        player.name.toLowercase().includes(searchParams);
-    })
+    ? players.filter((player) =>
+        player.name.toLowercase().includes(searchParams)
+    )
     : players;
-console.log(playersToDisplay);
+// console.log(playersToDisplay);
 
-    return(
+    return (
         <>
         <div>
             <label>
-                Search{" "}
+                Search {" "}
                 <input 
                 type="text"
                 placeholder="search"
@@ -59,20 +59,19 @@ console.log(playersToDisplay);
             </label>
         </div>
         <div>
-            <NewPlayerForm/>
+            <NewPlayerForm />
         </div>
 
 
         {playersToDisplay.map((player) => {
             return (
                 <>
-                <PlayerListName key={player.id} player={player}/>
+                <PlayerListName player={player} key={player.id}/> 
                 </>
             )
         })}
         </>
-    );
+    )
+ }
 
-    }
-
-export default AllPlayers;
+export default AllPlayers
